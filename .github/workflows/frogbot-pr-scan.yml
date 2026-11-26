@@ -5,6 +5,7 @@ on:
 permissions:
   pull-requests: write
   contents: read
+  security-events: write
 jobs:
   scan-pull-request:
     runs-on: ubuntu-latest
@@ -23,6 +24,7 @@ jobs:
 
       # - uses: jfrog/frogbot@v2
       - name: Frogbot
+        uses: jfrog/frogbot@v2
         env:
           # [Mandatory]
           # JFrog platform URL
@@ -97,7 +99,7 @@ jobs:
 
           # [Optional]
           # Relative path to a Pip requirements.txt file. If not set, the python project's dependencies are determined and scanned using the project setup.py file.
-          JF_REQUIREMENTS_FILE: "requirements.txt"
+          # JF_REQUIREMENTS_FILE: "requirements.txt"
 
           # [Optional]
           # Frogbot will download the project dependencies if they're not cached locally. To download the
@@ -119,12 +121,12 @@ jobs:
           # The following values are accepted: Low, Medium, High or Critical
           # JF_MIN_SEVERITY: ""
           # JF_GIT_PULL_REQUEST_ID: 44
-          JF_GIT_REPO: frogbot_demo_pypi
-          JF_GIT_OWNER: vijaygi-ind
+          # JF_GIT_REPO: frogbot_demo_pypi
+          # JF_GIT_OWNER: vijaygi-ind
           # PLAT_P: ${{ secrets.PLAT_P }}
-          JF_GIT_PROVIDER: github
-        run: |
-          curl -fLg "https://releases.jfrog.io/artifactory/frogbot/v3/[RELEASE]/getFrogbot.sh" | sh
-          chmod u+x frogbot
-          ./frogbot spr
+          # JF_GIT_PROVIDER: github
+        # run: |
+        #   curl -fLg "https://releases.jfrog.io/artifactory/frogbot/v3/[RELEASE]/getFrogbot.sh" | sh
+        #   chmod u+x frogbot
+        #   ./frogbot spr
           
