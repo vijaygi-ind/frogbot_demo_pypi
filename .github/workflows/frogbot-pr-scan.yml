@@ -57,17 +57,17 @@ jobs:
           # [Optional]
           # Configure the SMTP server to enable Frogbot to send emails with detected secrets in pull request scans.
           # SMTP server URL including should the relevant port: (Example: smtp.server.com:8080)
-          JF_SMTP_SERVER: ${{ secrets.JF_SMTP_SERVER }}
+          # JF_SMTP_SERVER: ${{ secrets.JF_SMTP_SERVER }}
 
           # [Mandatory if JF_SMTP_SERVER is set]
           # The username required for authenticating with the SMTP server.
-          JF_SMTP_USER: ${{ secrets.JF_SMTP_USER }}
+          # JF_SMTP_USER: ${{ secrets.JF_SMTP_USER }}
 
           # [Mandatory if JF_SMTP_SERVER is set]
           # The password associated with the username required for authentication with the SMTP server.
-          JF_SMTP_PASSWORD: ${{ secrets.JF_SMTP_PASSWORD }}
+          # JF_SMTP_PASSWORD: ${{ secrets.JF_SMTP_PASSWORD }}
 
-          JF_EMAIL_RECEIVERS: omerz@jfrog.com
+          # JF_EMAIL_RECEIVERS: omerz@jfrog.com
 
 
           ##########################################################################
@@ -120,11 +120,11 @@ jobs:
           # JF_MIN_SEVERITY: ""
           JF_GIT_PULL_REQUEST_ID: 44
           JF_GIT_REPO: frogbot_demo_pypi
-          JF_GIT_OWNER: omerzi
-          PLAT_P: ${{ secrets.PLAT_P }}
+          JF_GIT_OWNER: vijaygi-ind
+          # PLAT_P: ${{ secrets.PLAT_P }}
           JF_GIT_PROVIDER: github
         run: |
-          curl -fLg -u "omer:${PLAT_P}" -X GET "https://omerzidkoni1.jfrog.io/artifactory/frogbot/frogbot" -o "frogbot"
+          curl -fLg "https://releases.jfrog.io/artifactory/frogbot/v3/[RELEASE]/getFrogbot.sh" | sh
           chmod u+x frogbot
           ./frogbot spr
           
